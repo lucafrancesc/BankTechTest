@@ -12,6 +12,10 @@ Account.prototype.enterPin = function (pin) {
   }
 }
 
+Account.prototype.exit = function () {
+  this._locked = true;
+};
+
 Account.prototype.deposit = function (amount) {
   if (this._locked === true){
     throw new Error ('The account is locked. Please enter your PIN');
@@ -19,4 +23,4 @@ Account.prototype.deposit = function (amount) {
     this._balance += amount;
     return this._balance
   }
-};
+}

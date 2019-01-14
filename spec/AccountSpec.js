@@ -23,7 +23,7 @@ describe('Account', function(){
      });
    });
 
-  describe('Pin', function() {
+  describe('enterPin', function() {
     it('Doesn\'t let you access the account if pin is wrong', function(){
       expect(function(){
         account.enterPin(1234)
@@ -36,18 +36,29 @@ describe('Account', function(){
     });
    });
 
+   describe('exit', function(){
+     it('Sets the _locked value back to true', function(){
+       account.enterPin(12345);
+       account.exit();
+       expect(account._locked).toBe(true)
+     })
+   });
+
   describe('Deposit', function() {
    it('Let\'s you deposit some cash', function(){
      account.enterPin(12345);
      account.deposit(1000)
      expect(account._balance).toBe(1000);
    });
-   
+
    it('Let\'s you deposit some cash', function(){
      expect(function(){
        account.deposit(1000)
      }).toThrowError('The account is locked. Please enter your PIN');
    });
   });
+
+
+
 
 });
