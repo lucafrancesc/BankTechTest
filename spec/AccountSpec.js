@@ -19,5 +19,16 @@ describe('Account', function(){
    }).toThrowError('Wrong PIN!');
  });
 
+ it('If pin is wrong', function(){
+   expect(account._locked).toBe(true);
+ });
+
+ it('Let\'s you inside your account if the pin is right', function(){
+    account.enterPin(12345);
+    expect(account._locked).toBe(false);
+ });
+
+
+
 
 });
