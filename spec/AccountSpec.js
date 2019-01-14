@@ -42,6 +42,12 @@ describe('Account', function(){
      account.deposit(1000)
      expect(account._balance).toBe(1000);
    });
+   
+   it('Let\'s you deposit some cash', function(){
+     expect(function(){
+       account.deposit(1000)
+     }).toThrowError('The account is locked. Please enter your PIN');
+   });
   });
 
 });

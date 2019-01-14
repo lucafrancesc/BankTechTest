@@ -13,5 +13,10 @@ Account.prototype.enterPin = function (pin) {
 }
 
 Account.prototype.deposit = function (amount) {
-  this._balance += amount
+  if (this._locked === true){
+    throw new Error ('The account is locked. Please enter your PIN');
+  } else {
+    this._balance += amount;
+    return this._balance
+  }
 };
