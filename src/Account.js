@@ -5,9 +5,13 @@ function Account(pin){
 }
 
 Account.prototype.enterPin = function (pin) {
-  if (pin !== this._pin){
-    throw new Error ('Wrong PIN!');
-  } else {
+  if (pin === this._pin){
     this._locked = false;
+  } else {
+    throw new Error ('Wrong PIN!');
   }
 }
+
+Account.prototype.deposit = function (amount) {
+  this._balance += amount
+};
