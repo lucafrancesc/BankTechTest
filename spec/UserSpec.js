@@ -5,7 +5,7 @@ describe('User', function(){
    user = new User('Luca');
  });
 
- it('creates new users', function(){
+ it('Creates a new user', function(){
    expect(user).toBeDefined();
  });
 
