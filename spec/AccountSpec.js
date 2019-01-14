@@ -44,6 +44,19 @@ describe('Account', function(){
      })
    });
 
+   describe('statement', function(){
+     it('return the current balance', function(){
+       account.enterPin(12345);
+       expect(account.statement()).toBe(0)
+     });
+
+     it('Does not show the balance if locked', function(){
+       expect(function(){
+         account.statement();
+       }).toThrowError('The account is locked. Please enter your PIN');
+     });
+   });
+
   describe('deposit', function() {
    it('Let\'s you deposit some cash', function(){
      account.enterPin(12345);
