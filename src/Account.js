@@ -1,7 +1,9 @@
 function Account(pin){
+
   this._pin = pin;
   this._locked = true;
   this._balance = 0;
+  this._transactions = []
 }
 
 Account.prototype.enterPin = function (pin) {
@@ -14,7 +16,7 @@ Account.prototype.enterPin = function (pin) {
 
 Account.prototype.exit = function () {
   this._locked = true;
-};
+}
 
 Account.prototype.statement = function (amount) {
   if (this._locked === true){
@@ -24,12 +26,27 @@ Account.prototype.statement = function (amount) {
   }
 }
 
+Account.prototype.allTransactions = function (amount) {
+  if (this._locked === true){
+    throw new Error ('The account is locked. Please enter your PIN');
+  } else {
+    return this._transactions;
+  }
+}
+
+Account.prototype.transaction = function (amount) {
+  var date = new Date();
+  var transactionDate = `${date.getFullYear()}/${date.getMonth() + 1}/${date.getDate()}`
+  this._transactions.push([transactionDate, amount, this._balance]);
+};
+
 Account.prototype.deposit = function (amount) {
   if (this._locked === true){
     throw new Error ('The account is locked. Please enter your PIN');
   } else {
     this._balance += amount;
-    return this._balance
+    this.transaction(amount);
+    return this._balance;
   }
 }
 
@@ -38,7 +55,8 @@ Account.prototype.withdraw = function (amount) {
     throw new Error ('The account is locked. Please enter your PIN');
   } else if (this._balance >= amount){
     this._balance -= amount;
-    return this._balance
+    this.transaction(amount);
+    return this._balance;
   } else {
     throw new Error ('You don\'t have enouth money. Please deposit.');
   }

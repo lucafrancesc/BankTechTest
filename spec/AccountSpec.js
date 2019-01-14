@@ -3,6 +3,8 @@ describe('Account', function(){
 
   beforeEach(function() {
    account = new Account(12345);
+   var baseTime = new Date(2013, 9, 23);
+   jasmine.clock().mockDate(baseTime);
  });
 
    describe('Initial status', function() {
@@ -67,6 +69,31 @@ describe('Account', function(){
    it('Does not let you deposit if the account is locked', function(){
      expect(function(){
        account.deposit(1000)
+     }).toThrowError('The account is locked. Please enter your PIN');
+   });
+  });
+
+  describe('transaction', function() {
+   it('pushes date, amoutn and balance into the trnasactions array', function(){
+     account.enterPin(12345);
+     account.deposit(1000);
+     account.withdraw(100);
+     expect(account._transactions).toEqual([ [ '2013/10/23', 1000, 1000 ], [ '2013/10/23', 100, 900 ] ]);
+   });
+  });
+
+  describe('allTransactions', function() {
+   it('Let\'s you check all transactions', function(){
+     account.enterPin(12345);
+     account.deposit(1000);
+     account.withdraw(100);
+     expect(account.allTransactions()).toEqual([ [ '2013/10/23', 1000, 1000 ], [ '2013/10/23', 100, 900 ] ]);
+   });
+
+   it('Does not let you check the transactions\
+    if the account is locked', function(){
+     expect(function(){
+       account.allTransactions()
      }).toThrowError('The account is locked. Please enter your PIN');
    });
   });
