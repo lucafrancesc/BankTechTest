@@ -1,7 +1,16 @@
-function Song() {
-}
+describe('User', function(){
+  var user;
 
-Song.prototype.persistFavoriteStatus = function(value) {
-  // something complicated
-  throw new Error("not yet implemented");
-};
+  beforeEach(function() {
+   user = new User('Luca');
+ });
+
+ it('creates new users', function(){
+   expect(user).toBeDefined();
+ });
+
+ it('Saves the username', function(){
+   expect(user.name).toBe('Luca');
+ });
+
+});
