@@ -24,3 +24,14 @@ Account.prototype.deposit = function (amount) {
     return this._balance
   }
 }
+
+Account.prototype.withdraw = function (amount) {
+  if (this._locked === true){
+    throw new Error ('The account is locked. Please enter your PIN');
+  } else if (this._balance >= amount){
+    this._balance -= amount;
+    return this._balance
+  } else {
+    throw new Error ('You don\'t have enouth money. Please deposit.');
+  }
+}
