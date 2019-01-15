@@ -12,7 +12,7 @@ Statement.prototype.transaction = function (amount, balance) {
   this._transactions.push([transactionDate, amount, balance]);
 }
 
-Statement.prototype.allTransactions = function (){
+Statement.prototype.printAllTransactions = function (){
   var string = ''
   for (var i = 0; i < this._transactions.length; i++) {
     if(this._transactions[i][1] > 0){
