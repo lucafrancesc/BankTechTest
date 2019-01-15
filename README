@@ -1,1 +1,9 @@
 Bank Tech Test
+
+```js
+var account = new Account();
+
+account.deposit(100)
+account.withdraw(5)
+account.statement.allTransactions();
+```
