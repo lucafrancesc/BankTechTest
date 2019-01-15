@@ -9,7 +9,7 @@ Statement.prototype.heading = function () {
 Statement.prototype.transaction = function (amount, balance) {
   var date = new Date();
   var transactionDate = `${date.getFullYear()}/${date.getMonth() + 1}/${date.getDate()}`
-  this._transactions.push([transactionDate, amount, balance]);
+  this._transactions.unshift([transactionDate, amount, balance]);
 }
 
 Statement.prototype.printAllTransactions = function (){
