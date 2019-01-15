@@ -1,9 +1,6 @@
 function Statement(){
-  this._transactions = []
-};
-
-Statement.prototype.heading = function () {
-  return 'Date || Credit || Debit || Balance';
+  this._transactions = [];
+  this._heading = 'Date || Credit || Debit || Balance';
 };
 
 Statement.prototype.transaction = function (amount, balance) {
@@ -21,5 +18,5 @@ Statement.prototype.printAllTransactions = function (){
       string += `${this._transactions[i][0]} || || ${(this._transactions[i][1] * -1).toFixed(2)}  || ${this._transactions[i][2]}` + '\n';
     }
   }
-  return this.heading() + '\n' + string
+  return this._heading + '\n' + string
 }

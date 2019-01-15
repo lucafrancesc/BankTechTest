@@ -10,13 +10,13 @@ describe('Statement', function(){
 
  });
 
+describe('starting conditions', function() {
  it('Initial balance', function(){
    expect(statement._transactions).toEqual([]);
  });
 
-describe('heading', function() {
   it('Shows the heading', function(){
-    expect(statement.heading()).toBe('Date || Credit || Debit || Balance');
+    expect(statement._heading).toBe('Date || Credit || Debit || Balance');
   });
 });
 
