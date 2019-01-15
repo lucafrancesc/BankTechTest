@@ -3,8 +3,6 @@ describe('Account', function(){
 
   beforeEach(function() {
    account = new Account();
-   var baseTime = new Date(2013, 9, 23);
-   jasmine.clock().mockDate(baseTime);
  });
 
    describe('Initial status', function() {
@@ -32,7 +30,6 @@ describe('Account', function(){
      expect(account._balance).toBe(950);
    });
 
-
    it('Throws an error if there is not enough in the account', function(){
      expect(function(){
        account.withdraw(50);
@@ -40,11 +37,4 @@ describe('Account', function(){
    });
   });
 
-
 });
-
-// var account = new Account(12345, 'Luca');
-// account.enterPin(12345)
-// account.deposit(100)
-// account.withdraw(5)
-// account.allTransactions()

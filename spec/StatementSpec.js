@@ -11,7 +11,7 @@ describe('Statement', function(){
  });
 
   it('Shows the heading', function(){
-    expect(statement.heading()).toBe('Date		||   Credit || Debit  || Balance');
+    expect(statement.heading()).toBe('Date || Credit || Debit || Balance');
   });
 
   describe('transaction', function() {
@@ -21,14 +21,12 @@ describe('Statement', function(){
    });
   });
 
-  // describe('allTransactions', function() {
-  //
-  //
-  //  it('Let\'s you check all transactions', function(){
-  //    statement.transaction(1000,1000)
-  //    expect(statement.allTransactions()).toEqual(undefined);
-  //  });
-  //
-  // });
+  describe('allTransactions', function() {
+   it('Let you check all transactions', function(){
+     statement.transaction(1000,1000)
+     expect(statement.allTransactions()).toEqual('Date || Credit || Debit || Balance' + '\n'
+     + '2013/10/23 || 1000 ||  || 1000' + '\n');
+   });
 
+  });
 });
