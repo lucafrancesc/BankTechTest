@@ -23,6 +23,10 @@ describe('Account', function(){
      it('Initial balance', function(){
        expect(account._balance).toBe(0);
      });
+
+     it('Shows the heading', function(){
+       expect(account.heading()).toBe('Date		||   Credit || Debit  || Balance');
+     });
    });
 
   describe('enterPin', function() {
@@ -74,11 +78,11 @@ describe('Account', function(){
   });
 
   describe('transaction', function() {
-   it('pushes date, amoutn and balance into the trnasactions array', function(){
+   it('pushes date, amount and balance into the transactions array', function(){
      account.enterPin(12345);
      account.deposit(1000);
      account.withdraw(100);
-     expect(account._transactions).toEqual([ [ '2013/10/23', 1000, 1000 ], [ '2013/10/23', 100, 900 ] ]);
+     expect(account._transactions).toEqual([ [ '2013/10/23', 1000, 1000 ], [ '2013/10/23', -100, 900 ] ]);
    });
   });
 
@@ -87,7 +91,7 @@ describe('Account', function(){
      account.enterPin(12345);
      account.deposit(1000);
      account.withdraw(100);
-     expect(account.allTransactions()).toEqual([ [ '2013/10/23', 1000, 1000 ], [ '2013/10/23', 100, 900 ] ]);
+     expect(account._transactions).toEqual([ [ '2013/10/23', 1000, 1000 ], [ '2013/10/23', -100, 900 ] ]);
    });
 
    it('Does not let you check the transactions\
@@ -122,3 +126,9 @@ describe('Account', function(){
 
 
 });
+
+var account = new Account(12345, 'Luca');
+account.enterPin(12345)
+account.deposit(100)
+account.withdraw(5)
+account.allTransactions()
