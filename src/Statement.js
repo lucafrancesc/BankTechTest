@@ -9,7 +9,7 @@ Statement.prototype.heading = function () {
 Statement.prototype.transaction = function (amount, balance) {
   var date = new Date();
   var transactionDate = `${date.getFullYear()}/${date.getMonth() + 1}/${date.getDate()}`
-  this._transactions.unshift([transactionDate, amount, balance]);
+  this._transactions.unshift([transactionDate, amount.toFixed(2), balance.toFixed(2)]);
 }
 
 Statement.prototype.printAllTransactions = function (){
@@ -18,7 +18,7 @@ Statement.prototype.printAllTransactions = function (){
     if(this._transactions[i][1] > 0){
       string += `${this._transactions[i][0]} || ${this._transactions[i][1]} ||  || ${this._transactions[i][2]}` + '\n';
     } else {
-      string += `${this._transactions[i][0]} || || ${this._transactions[i][1] * -1}   || ${this._transactions[i][2]}` + '\n';
+      string += `${this._transactions[i][0]} || || ${(this._transactions[i][1] * -1).toFixed(2)}  || ${this._transactions[i][2]}` + '\n';
     }
   }
   return this.heading() + '\n' + string

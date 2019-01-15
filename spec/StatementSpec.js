@@ -23,7 +23,7 @@ describe('heading', function() {
   describe('transaction', function() {
    it('pushes date, amount and balance into the transactions array', function(){
      statement.transaction(1000,1000)
-     expect(statement._transactions).toEqual([ [ '2013/10/23', 1000, 1000 ] ]);
+     expect(statement._transactions).toEqual([ [ '2013/10/23', '1000.00', '1000.00' ] ]);
    });
   });
 
@@ -31,7 +31,7 @@ describe('heading', function() {
    it('Let you check all transactions', function(){
      statement.transaction(1000,1000)
      expect(statement.printAllTransactions()).toEqual('Date || Credit || Debit || Balance' + '\n'
-     + '2013/10/23 || 1000 ||  || 1000' + '\n');
+     + '2013/10/23 || 1000.00 ||  || 1000.00' + '\n');
    });
 
   });
