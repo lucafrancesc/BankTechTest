@@ -1,3 +1,5 @@
+'use strict';
+
 describe('Account', function(){
   var account;
 
@@ -17,8 +19,7 @@ describe('Account', function(){
 
   describe('deposit', function() {
    it('Let you deposit some cash', function(){
-     account.deposit(1000)
-     expect(account._balance).toBe(1000);
+     expect(account.deposit(1000)).toBe(1000);
    });
 
   });
@@ -26,8 +27,7 @@ describe('Account', function(){
   describe('withdraw', function() {
    it('Let you withdraw some cash', function(){
      account.deposit(1000);
-     account.withdraw(50);
-     expect(account._balance).toBe(950);
+     expect(account.withdraw(50)).toBe(950);
    });
 
    it('Throws an error if there is not enough in the account', function(){

@@ -1,19 +1,24 @@
-function Account(){
+'use strict';
+
+function Account(statement = new Statement(), transactions = new Transactions()){
   this._balance = 0;
-  this.statement = new Statement();
+  this.statement = statement;
+  this.transactions = transactions;
 }
 
 Account.prototype.deposit = function (amount) {
   this._balance += amount;
-  this.statement.transaction(amount, this._balance);
+  this.transactions.singleTransaction(amount, this._balance);
+  return this._balance;
 }
 
 Account.prototype.withdraw = function (amount) {
   if (this._balance >= amount){
-    negAmount = amount * -1
+    var negAmount = amount * -1;
     this._balance += negAmount;
-    this.statement.transaction(negAmount, this._balance);
+    this.transactions.singleTransaction(negAmount, this._balance);
   } else {
     throw new Error ('You don\'t have enouth money. Please deposit.');
   }
+  return this._balance
 }
