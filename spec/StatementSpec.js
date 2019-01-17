@@ -7,9 +7,9 @@ describe('Statement', function(){
    transactions = jasmine.createSpy('transactions');
  });
 
-  describe('printStatement', function() {
+  describe('returnStatement', function() {
    it('Prints the header if no transactions', function(){
-     expect(statement.printStatement(transactions)).toEqual('Date || Credit || Debit || Balance \n');
+     expect(statement.returnStatement(transactions)).toEqual('Date || Credit || Debit || Balance\n');
    });
   });
 

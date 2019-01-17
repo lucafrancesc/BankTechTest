@@ -9,8 +9,12 @@ The Account constructor takes care of the balance and deposit/withdraw, the Tran
 ![alt text](https://github.com/lucafrancesc/BankTechTest/blob/master/Screenshot%202019-01-15%20at%2015.29.05.png)
 
 ```
+'create an instance of account'
 var account = new Account();
-account.deposit(100);
-account.withdraw(5);
-account.statement.printStatement(account.transactions._allTransactions);
+'deposit money in the account'
+account.deposit(1000);
+account.deposit(2000);
+'withdraw some money'
+account.withdraw(500);
+account.printStatement();
 ```

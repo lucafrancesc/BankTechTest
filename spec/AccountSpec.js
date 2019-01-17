@@ -37,4 +37,13 @@ describe('Account', function(){
    });
   });
 
+  describe('print', function() {
+    it('prints the statement', function(){
+      account.deposit(1000);
+      account.withdraw(50);
+      var statement = `Date || Credit || Debit || Balance\n2019/1/17 || || 50.00 || 950.00\n2019/1/17 || 1000.00 || || 1000.00\n`
+      expect(account.printStatement()).toEqual(statement);
+    });
+  });
+
 });

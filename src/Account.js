@@ -13,7 +13,7 @@ Account.prototype.deposit = function (amount) {
 }
 
 Account.prototype.withdraw = function (amount) {
-  if (this._balance >= amount){
+  if (this._balance > amount){
     var negAmount = amount * -1;
     this._balance += negAmount;
     this.transactions.singleTransaction(negAmount, this._balance);
@@ -22,3 +22,7 @@ Account.prototype.withdraw = function (amount) {
   }
   return this._balance
 }
+
+Account.prototype.printStatement = function () {
+  return this.statement.returnStatement(this.transactions._allTransactions);
+};
