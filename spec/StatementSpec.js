@@ -12,6 +12,4 @@ describe('Statement', function(){
 			expect(statement.returnStatement(transactions)).toEqual('Date || Credit || Debit || Balance\n');
 		});
 	});
-
-
 });

@@ -1,48 +1,62 @@
 'use strict';
 
 describe('Account', function(){
-  var account;
+	var account;
+	var statement;
+	var transactions;
 
-  beforeEach(function() {
-   account = new Account();
- });
+	beforeEach(function() {
+		statement = jasmine.createSpyObj('statement',['returnStatement']);
+		transactions = jasmine.createSpyObj('transactions',['singleTransaction']);
+		account = new Account(statement, transactions);
+	});
 
- describe('Initial status', function() {
-   it('Creates a new account', function(){
-     expect(account).toBeDefined();
-   });
+	describe('Initial status', function() {
+		it('Creates a new account', function(){
+			expect(account).toBeDefined();
+		});
 
-   it('Initial balance', function(){
-     expect(account._balance).toBe(0);
-   });
- });
+		it('expects transactions to exist', function(){
+			expect(transactions.singleTransaction).toBeDefined();
+		});
 
-  describe('deposit', function() {
-   it('Let you deposit some cash', function(){
-     expect(account.deposit(1000)).toBe(1000);
-   });
-  });
+		it('expects statement to exist', function(){
+			expect(statement.returnStatement).toBeDefined();
+		});
 
-  describe('withdraw', function() {
-   it('Let you withdraw some cash', function(){
-     account.deposit(1000);
-     expect(account.withdraw(50)).toBe(950);
-   });
+		it('Initial balance', function(){
+			expect(account.balance).toBe(0);
+		});
+	});
 
-   it('Throws an error if there is not enough in the account', function(){
-     expect(function(){
-       account.withdraw(50);
-     }).toThrowError('You don\'t have enouth money. Please deposit.');
-    });
-  });
+	describe('deposit', function() {
+		it('Let you deposit some cash', function(){
+			expect(account.deposit(1000)).toBe(1000);
+			expect(transactions.singleTransaction).toHaveBeenCalled();
+		});
+	});
 
-  describe('printStatement', function() {
-    it('prints the statement', function(){
-      account.deposit(1000);
-      account.withdraw(50);
-      var statement = `Date || Credit || Debit || Balance\n2019/1/17 || || 50.00 || 950.00\n2019/1/17 || 1000.00 || || 1000.00\n`
-      expect(account.printStatement()).toEqual(statement);
-    });
-  });
+	describe('withdraw', function() {
+		it('Let you withdraw some cash', function(){
+			account.deposit(1000);
+			expect(account.withdraw(50)).toBe(950);
+			expect(transactions.singleTransaction).toHaveBeenCalled();
+		});
 
+		it('Throws an error if there is not enough in the account', function(){
+			expect(function(){
+				account.withdraw(50);
+			}).toThrowError('You don\'t have enouth money. Please deposit.');
+		});
+	});
+
+	describe('printStatement', function() {
+		it('prints the statement', function(){
+			account.deposit(1000);
+			account.withdraw(50);
+			expect(transactions.singleTransaction).toHaveBeenCalled();
+			account.printStatement();
+			expect(statement.returnStatement).toHaveBeenCalled();
+		});
+	});
 });
