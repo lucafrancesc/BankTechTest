@@ -1,0 +1,22 @@
+{
+  "name": "banktechtest",
+  "version": "1.0.0",
+  "description": "Bank Tech Test",
+  "main": "index.js",
+  "directories": {
+    "lib": "lib"
+  },
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/lucafrancesc/BankTechTest.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/lucafrancesc/BankTechTest/issues"
+  },
+  "homepage": "https://github.com/lucafrancesc/BankTechTest#readme"
+}
