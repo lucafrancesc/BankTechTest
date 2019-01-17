@@ -38,8 +38,8 @@ This was the first time I used a linter with JS and I have found [ESLint](https:
 After having installed NodeJS you can run this commands in your terminal to check your files.
 
 ```
-npm init
-npm i -g eslint
-eslint src/**
-eslint spec/**
+$ npm init
+$ npm i -g eslint
+$ eslint src/**
+$ eslint spec/**
 ```
