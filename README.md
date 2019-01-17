@@ -35,8 +35,11 @@ Linter
 First of all you will have to download [NodeJS](https://nodejs.org/en/download/) if you don't have it.
 This was the first time I used a linter with JS and I have found [ESLint](https://eslint.org/) simple enough.
 
-After having installed NodeJS you can follow this commands to check your files.
- 
->npm init
->npm i -g eslint
->eslint src/**
+After having installed NodeJS you can run this commands in your terminal to check your files.
+
+```
+npm init
+npm i -g eslint
+eslint src/**
+eslint spec/**
+```
