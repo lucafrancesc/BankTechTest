@@ -13,14 +13,14 @@ Account.prototype.deposit = function (amount) {
 }
 
 Account.prototype.withdraw = function (amount) {
-  if (this._balance > amount){
+  if (amount <= this._balance){
     var negAmount = amount * -1;
     this._balance += negAmount;
     this.transactions.singleTransaction(negAmount, this._balance);
   } else {
     throw new Error ('You don\'t have enouth money. Please deposit.');
   }
-  return this._balance
+  return this._balance;
 }
 
 Account.prototype.printStatement = function () {

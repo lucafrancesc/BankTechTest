@@ -7,21 +7,20 @@ describe('Account', function(){
    account = new Account();
  });
 
-   describe('Initial status', function() {
-     it('Creates a new account', function(){
-       expect(account).toBeDefined();
-     });
-
-     it('Initial balance', function(){
-       expect(account._balance).toBe(0);
-     });
+ describe('Initial status', function() {
+   it('Creates a new account', function(){
+     expect(account).toBeDefined();
    });
+
+   it('Initial balance', function(){
+     expect(account._balance).toBe(0);
+   });
+ });
 
   describe('deposit', function() {
    it('Let you deposit some cash', function(){
      expect(account.deposit(1000)).toBe(1000);
    });
-
   });
 
   describe('withdraw', function() {
@@ -34,10 +33,10 @@ describe('Account', function(){
      expect(function(){
        account.withdraw(50);
      }).toThrowError('You don\'t have enouth money. Please deposit.');
-   });
+    });
   });
 
-  describe('print', function() {
+  describe('printStatement', function() {
     it('prints the statement', function(){
       account.deposit(1000);
       account.withdraw(50);
