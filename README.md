@@ -1,6 +1,6 @@
 Bank Tech Test
 
-I started out by adding [Jasmine](https://github.com/jasmine/jasmine/releasesto) my folder to test my code.
+I started out by adding [Jasmine](https://github.com/jasmine/jasmine/releases) my folder to test my code.
 When I began I created the Account constructor which was managing everything.
 After that I moved the function related to the transactions in the Transaction and the statement into the Statement constructor.
 The Account constructor takes care of the balance and deposit/withdraw, the Transaction one saves all the transactions into an array and the statement prints out the heading and the list of transaction.
