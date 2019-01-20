@@ -21,13 +21,13 @@ describe('Features', function(){
   describe('full test', function(){
     it('it can deposit money in a new account', function(){
       account.deposit(10);
-      expect(account.balance).toEqual(10);
+      expect(account._checkBalance()).toEqual(10);
     });
 
     it('it can withdraw money from that account', function(){
       account.deposit(10);
       account.withdraw(5);
-      expect(account.balance).toEqual(5);
+      expect(account._checkBalance()).toEqual(5);
     });
 
     it('can print the statement', function(){

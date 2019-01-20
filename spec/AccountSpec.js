@@ -25,7 +25,7 @@ describe('Account', function(){
 		});
 
 		it('Initial balance', function(){
-			expect(account.balance).toBe(0);
+			expect(account._checkBalance()).toBe(0);
 		});
 	});
 
