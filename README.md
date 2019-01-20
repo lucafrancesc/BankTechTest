@@ -6,8 +6,8 @@ After that I moved the function related to the transactions in the Transaction a
 The Account constructor takes care of the balance and deposit/withdraw, the Transaction one saves all the transactions into an array and the statement prints out the heading and the list of transaction.
 To run all the tests you can copy in your browser the SpecRunner.html url.
 
-![alt text]()
-![alt text]()
+![alt text](https://github.com/lucafrancesc/BankTechTest/blob/master/Tests.png)
+![alt text](https://github.com/lucafrancesc/BankTechTest/blob/master/methodTesting.png)
 
 You can use this commands to run the code in the developer tools console (Cmd + Option + I).
 
